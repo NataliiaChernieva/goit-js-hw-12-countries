@@ -3,7 +3,7 @@ import _debounce from '../node_modules/lodash.debounce';
 import API from './js/fetchCountries';
 import countryCardTmp from './templates/country-card.hbs';
 import contriesTmp from './templates/contries.hbs';
-import { error } from '@pnotify/core ';
+//import { error } from '@pnotify/core ';
 
 const refs = {
     inputEl: document.querySelector('.inputCountry'),
@@ -35,7 +35,7 @@ function renderCountryCard(data) {
         // PNotify.error ({
         //     text: 'Необходимо сделать запрос более специфичным'
         // });
-        
+
         // const myError = error ( {   
         // text: 'Необходимо сделать запрос более специфичным'
         // } ) ;
