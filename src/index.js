@@ -19,8 +19,6 @@ refs.inputEl.addEventListener('input', _debounce(() => {
     API.fetchCountries(inputedCountry)
         .then(renderCountryCard)
         .catch(onFetchError)
-       //.finally();
-
 }, 500))
 
 function renderCountryCard(data) {
@@ -47,9 +45,9 @@ function onFetchError() {
     })
 }
 
-function resetInput() {
-    refs.inputEl.value = '';
-}
+// function resetInput() {
+//     refs.inputEl.value = '';
+// }
 
 function resetPage (){
     refs.cardContainer.innerHTML =''
