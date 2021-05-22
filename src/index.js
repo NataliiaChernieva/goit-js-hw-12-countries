@@ -15,24 +15,26 @@ const refs = {
 refs.inputEl.addEventListener('input', _debounce(() => {
     let inputedCountry = refs.inputEl.value;
     //console.log('inputedCountry :>> ', inputedCountry);
-    
+    if (!inputedCountry) return;
     API.fetchCountries(inputedCountry)
-       .then(renderCountryCard)
-       .catch(onFetchError)
+        .then(renderCountryCard)
+        .catch(onFetchError)
        //.finally();
 
 }, 500))
 
 function renderCountryCard(data) {
+    console.log('data :>> ', data);
     if(data.length===1){
         const markup = countryCardTmp(data);
         console.log('markup :>> ', markup);
         refs.cardContainer.innerHTML = markup;
-        resetInput();
+        //resetInput();
     } else if (data.length > 1 && data.length <= 10) {
         const markupContries = contriesTmp(data);
         refs.cardContainer.innerHTML = markupContries;
-    } else {
+    } else if(data.length > 10){
+        resetPage();
         PNotify.error ({
             text: 'Необходимо сделать запрос более специфичным'
         });
@@ -47,4 +49,8 @@ function onFetchError() {
 
 function resetInput() {
     refs.inputEl.value = '';
+}
+
+function resetPage (){
+    refs.cardContainer.innerHTML =''
 }
